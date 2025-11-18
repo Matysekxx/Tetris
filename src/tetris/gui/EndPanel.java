@@ -18,7 +18,7 @@ public class EndPanel extends JPanel {
         this.endingColors = endingColors;
         this.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 90));
         audio = new AudioPlayer(path, infiniteLoop);
-        timer = new Timer(100, _ -> repaint());
+        timer = new Timer(100, e -> repaint());
         this.setPreferredSize(new Dimension(1000, 1000));
     }
 
@@ -35,7 +35,6 @@ public class EndPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // Fill the entire panel with background color to ensure visibility
         g.setColor(getBackground());
         g.fillRect(0, 0, getWidth(), getHeight());
 
@@ -48,7 +47,6 @@ public class EndPanel extends JPanel {
             }
         }
 
-        // Draw the text once per paint cycle, not in the loop
         g.setFont(getFont());
         FontMetrics fm = g.getFontMetrics();
         int textWidth = fm.stringWidth(text);
